@@ -1,1 +1,39 @@
-Server is Live! 🚀
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cws — C++ event-driven web server</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1>cws <span class="v">0.2</span></h1>
+  <p class="lede">A static HTTP/1.1 server in C++17. No dependencies, no
+  framework, no blocking I/O anywhere on the request path.</p>
+
+  <h2>How a request is served</h2>
+  <ol>
+    <li>The listening socket is edge-triggered; every event loop drains
+        <code>accept()</code> until <code>EAGAIN</code>.</li>
+    <li>The request head is accumulated across reads until
+        <code>CRLFCRLF</code> — never assumed to arrive in one segment.</li>
+    <li>The path is looked up in a map built at startup, so traversal has
+        nothing to escape into.</li>
+    <li>The response is a <code>writev()</code> of three pointers: precomputed
+        header, cached Date line, resident body. Zero allocations.</li>
+    <li>Short writes leave the tail pending; the write filter re-fires when the
+        send buffer drains.</li>
+  </ol>
+
+  <h2>Try it</h2>
+  <pre><code>curl -i http://localhost:8080/
+curl -i http://localhost:8080/nope          # 404
+curl -i -X POST http://localhost:8080/      # 405
+curl -i --path-as-is http://localhost:8080/../../etc/passwd   # 400</code></pre>
+
+  <p class="foot">This page is being served out of memory. It was read from
+  disk exactly once, at startup.</p>
+</main>
+</body>
+</html>
