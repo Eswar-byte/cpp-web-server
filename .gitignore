@@ -1,5 +1,5 @@
 server
+loadgen
 *.o
-*.out
 *.dSYM/
-.DS_Store
+www/big.bin
