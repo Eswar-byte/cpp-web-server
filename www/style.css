@@ -1,0 +1,51 @@
+:root { color-scheme: light dark; }
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  background: #fbfbfa;
+  color: #1a1a19;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background: #16161a; color: #e6e6e3; }
+  code, pre { background: #22222a !important; }
+  .v { color: #8a8a95 !important; }
+}
+
+main { max-width: 44rem; margin: 0 auto; padding: 4rem 1.5rem; }
+
+h1 { font-size: 2.25rem; margin: 0 0 .25rem; letter-spacing: -.02em; }
+.v { font-size: 1rem; font-weight: 400; color: #8a8a90; }
+h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; letter-spacing: -.01em; }
+
+.lede { font-size: 1.1rem; color: #55555f; margin-top: 0; }
+@media (prefers-color-scheme: dark) { .lede { color: #a0a0aa; } }
+
+ol { padding-left: 1.2rem; }
+li { margin: .4rem 0; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .875em;
+  background: #eeeeec;
+  padding: .1em .35em;
+  border-radius: 4px;
+}
+
+pre {
+  background: #eeeeec;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+pre code { background: none; padding: 0; }
+
+.foot {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dededa;
+  font-size: .9rem;
+  color: #77777f;
+}
